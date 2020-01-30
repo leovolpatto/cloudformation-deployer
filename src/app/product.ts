@@ -20,15 +20,3 @@ export async function getProduct(Id: number) {
     }
     return response.data;
 }
-
-export async function getSkus(page: number, pageSize: number) {
-    // retornar mensagem de erro se (pageSize > 100(?))
-    const response = await axios({
-        url: `https://tokstok.vtexcommercestable.com.br/api/catalog_system/pvt/sku/stockkeepingunitids?page=${page}&pagesize=${pageSize}`,
-        headers: {
-            'x-vtex-api-appToken': 'RMHXHAXJXLACKLNKYRAGENBXHOWLCZMVFXOMKYFUJJEWNMWTYPGVVBWELJQSDLHXZEWNWAAZLFWVIEKVRDNMTQADAKBAIMQYBGWIPJXXPGKPFAVGZVBAYUEJDSMLZARZ',
-            'x-vtex-api-appKey': 'vtexappkey-tokstok-TCYTIY'
-        }
-    });
-    return response.data;
-}

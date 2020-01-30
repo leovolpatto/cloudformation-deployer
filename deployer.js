@@ -60,7 +60,7 @@ class CloudFormationDeployer {
     /**
      * @type AWS.CloudFormation
      */
-    //cloudformation;
+    cloudformation;
 
     constructor() {
         this.cloudformation = new AWS.CloudFormation({ apiVersion: '2010-05-15', region: 'us-east-1' });
