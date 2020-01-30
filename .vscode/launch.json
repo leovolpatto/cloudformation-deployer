@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Program",            
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceRoot}/src/app.ts",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": [
+                "${workspaceRoot}/build/**/*.js"
+            ],
+            "sourceMaps": true
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Deployer",            
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceRoot}/deployer.js",
+            "sourceMaps": true
+        }        
+    ]
+}

@@ -1,0 +1,59 @@
+
+/*{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",    
+    "declarationMap": true,
+    "declaration": true,
+    "declarationDir": "build",
+    "listEmittedFiles": true,
+    "pretty": true,
+    "outDir": "./dist",
+    "listFiles": true,
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+  },
+  "exclude": [    
+    "build",
+    //"node_modules"
+  ],
+  "include": [
+    "src/*",
+    "node_modules/*"
+  ]
+}*/
+
+
+
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": ["es2017"],
+    "declarationMap": true,
+    "declaration": true,
+    "declarationDir": "build",    
+    "sourceMap": true,
+    "inlineSources": true,
+    "listEmittedFiles": true,
+    "pretty": true,
+    "outDir": "build",
+    "listFiles": true,
+    //"watch": true
+  },
+  "exclude": [    
+    "build",
+    //"node_modules"
+  ],
+  "include": [
+    "src/*",
+    "node_modules/*"
+  ]
+}

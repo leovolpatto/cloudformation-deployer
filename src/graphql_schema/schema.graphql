@@ -1,0 +1,156 @@
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Categoria {
+  Categoria: String
+  Departamento: String!
+  Subcategoria: String
+}
+
+type Especificacao {
+  Observacao: String
+  Resumo: String
+}
+
+type Mutation {
+  createRating(input: CreateRatingInput!): Rating
+  deleteRating(input: DeleteRatingInput!): Rating
+  updateRating(input: UpdateRatingInput!): Rating
+}
+
+type Product {
+  Categoria: [Categoria]
+  Descricao: String
+  Id: Int!
+  Marca: String
+  Nome: String
+  Ratings: [Rating]
+  Skus: [Sku]
+  Visivel: Boolean!
+}
+
+type ProductConnection {
+  items: [Product]
+  nextToken: String
+}
+
+type Query {
+  getProduct(Id: ID!): Product
+  getRating(Id: ID!): Rating
+  listProducts(filter: ProductFilterInput, limit: Int, nextToken: String): ProductConnection
+  listRatings(filter: TableRatingFilterInput, limit: Int, nextToken: String): RatingConnection
+  queryRatingsByProductId(ProductId: Int!, after: String, first: Int): RatingConnection
+}
+
+type Rating {
+  Id: ID!
+  Product: Product
+  ProductId: Int!
+  Rating: Int
+}
+
+type RatingConnection {
+  items: [Rating]
+  nextToken: String
+}
+
+type Sku {
+  Especificacoes: Especificacao
+  Id: Int!
+  Nome: String
+}
+
+type Subscription {
+  onCreateRating(Id: ID, ProductId: Int, Rating: Int): Rating @aws_subscribe(mutations : ["createRating"])
+  onDeleteRating(Id: ID, ProductId: Int, Rating: Int): Rating @aws_subscribe(mutations : ["deleteRating"])
+  onUpdateRating(Id: ID, ProductId: Int, Rating: Int): Rating @aws_subscribe(mutations : ["updateRating"])
+}
+
+input CreateRatingInput {
+  Id: ID!
+  ProductId: Int!
+  Rating: Int
+}
+
+input DeleteRatingInput {
+  Id: ID!
+}
+
+input ProductFilterInput {
+  Descricao: TableStringFilterInput
+  Id: TableIntFilterInput
+  Marca: TableStringFilterInput
+  Nome: TableStringFilterInput
+  Visivel: TableBooleanFilterInput
+}
+
+input TableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input TableFloatFilterInput {
+  between: [Float]
+  contains: Float
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+  notContains: Float
+}
+
+input TableIDFilterInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+}
+
+input TableIntFilterInput {
+  between: [Int]
+  contains: Int
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+  notContains: Int
+}
+
+input TableRatingFilterInput {
+  Id: TableIDFilterInput
+  ProductId: TableIntFilterInput
+  Rating: TableIntFilterInput
+}
+
+input TableStringFilterInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+}
+
+input UpdateRatingInput {
+  Id: ID!
+  ProductId: Int
+  Rating: Int
+}

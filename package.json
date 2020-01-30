@@ -1,0 +1,29 @@
+{
+  "name": "leo-test",
+  "version": "0.0.1",
+  "scripts": {
+    "deploy": "cd ./build && npm install && cd .. && node deployer.js",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "start": "node build/app",
+    "prestart": "tsc --build",
+    "buildanddeploy": "tsc --build && node file-copy.js && cd ./build && npm install && cd .. && node deployer.js"    
+  },
+  "description": "(Node + Express + Typescript) in (VS Code (with debug enabled)) boilerplate from hell",
+  "author": {
+    "name": "Leonardo Volpatto",
+    "email": "leovolpatto@gmail.com"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.610.0",
+    "uuid": "^3.4.0",
+    "zip-local": "^0.3.4",
+    "axios": "^0.19.0"
+  },
+  "devDependencies": {
+    "@types/mime": "^1.3.1",
+    "@types/node": "^8.10.59",
+    "typescript": "^3.2.2"
+  }
+}
