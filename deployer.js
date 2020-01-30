@@ -1,13 +1,5 @@
-/*
-import aws from 'aws-sdk';// import entire SDK
-import AWS from 'aws-sdk/global';// import AWS object without services
-import S3 from 'aws-sdk/clients/s3';// import individual service
-*/
-//https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
-
 var fs = require('fs');
 var AWS = require("aws-sdk");
-
 
 class S3FileUploader {
 
@@ -203,16 +195,16 @@ class Deployer {
     /**
      * @type S3FileUploader
      */
-    //s3Uploader;
-    //bucketName = 'leo-cloudformation-deployer-test';
+    s3Uploader;
+    bucketName = 'leo-cloudformation-deployer-test';
 
     test() {
         this.bucketName = 'leo-cloudformation-deployer-test';
         this.s3Uploader = new S3FileUploader(this.bucketName);
         this.uploadYamlTemplate()
-            /*.then(() => {
+            .then(() => {
                 return this.s3Uploader.uploadFileToS3('src/graphql_schema/schema.graphql');
-            })*/
+            })
             .then(() => {
                 return this.uploadLambdas();
             })
